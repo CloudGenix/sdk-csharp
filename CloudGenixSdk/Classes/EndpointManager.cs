@@ -30,10 +30,12 @@ namespace CloudGenix.Classes
             _Endpoints = new Dictionary<string, string>();
 
             AddVersion("login", "v2.0");
+            AddVersion("logout", "v2.0");
             AddVersion("permissions", "v2.0");
-            AddVersion("profile", "v2.0"); 
+            AddVersion("profile", "v2.0");
 
             AddEndpoint("login", "/%s/api/login");
+            AddEndpoint("logout", "/%s/api/logout");
             AddEndpoint("permissions", "/%s/api/permissions");
             AddEndpoint("profile", "/%s/api/profile");
             AddEndpoint("flows_monitor", "/%s/api/tenants/%s/monitor/flows");

@@ -67,7 +67,7 @@ namespace CloudGenix
                 "POST",
                 null, null, false, IgnoreCertErrors,
                 _AuthHeaders,
-                LoginRequest()); 
+                LoginRequest());
 
             if (resp == null)
             {
@@ -89,7 +89,7 @@ namespace CloudGenix
             }
 
             Debug.WriteLine("Login response: " + Encoding.UTF8.GetString(resp.Data));
-                            
+
             Dictionary<string, object> respDict = Common.DeserializeJson<Dictionary<string, object>>(resp.Data);
             if (!respDict.ContainsKey("x_auth_token"))
             {
@@ -117,6 +117,34 @@ namespace CloudGenix
             GetTenantId();
 
             Debug.WriteLine("Login authenticated successfully");
+
+            return true;
+        }
+
+        public bool Logout()
+        {
+            string url = BuildUrl("logout");
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "GET",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                null);
+
+            if (resp == null)
+            {
+                Debug.WriteLine("Logout no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("Logout non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
 
             return true;
         }

@@ -93,6 +93,10 @@ namespace SdkCli
                         Console.Clear();
                         break;
 
+                    case "logout":
+                        Console.WriteLine(_Cgnx.Logout());
+                        break;
+
                     #region Show-Commands
 
                     case "show tenant_id":
@@ -274,6 +278,7 @@ namespace SdkCli
             Console.WriteLine("CloudGenix Controller -- Available Commands");
             Console.WriteLine("  q              quit");
             Console.WriteLine("  cls            clear console");
+            Console.WriteLine("  logout         logout of the controller session");
             Console.WriteLine("  show <cmd>     show commands");
             Console.WriteLine("                 | token   tenant_id   versions   endpoints");
             Console.WriteLine("  get <cmd>      retrieve objects");

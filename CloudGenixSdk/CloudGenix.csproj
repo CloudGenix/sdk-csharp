@@ -1,0 +1,88 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C18A2B54-D474-4E76-8AA1-603C235DC9E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CloudGenix</RootNamespace>
+    <AssemblyName>CloudGenixSdk</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="RestWrapper">
+      <HintPath>..\packages\RestWrapper.1.0.8\lib\RestWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CgnxController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Template.cs" />
+    <Compile Include="Api\Template.cs" />
+    <Compile Include="Classes\EndpointManager.cs" />
+    <Compile Include="Classes\Common.cs" />
+    <Compile Include="Classes\Site.cs" />
+    <Compile Include="Classes\Address.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\ResourceResponse.cs" />
+    <Compile Include="Classes\Element.cs" />
+    <Compile Include="Classes\ElementInterface.cs" />
+    <Compile Include="Classes\IpV4Configuration.cs" />
+    <Compile Include="Classes\ElementInterfaceStatus.cs" />
+    <Compile Include="Classes\Context.cs" />
+    <Compile Include="Classes\WanNetwork.cs" />
+    <Compile Include="Classes\LanNetworks.cs" />
+    <Compile Include="Classes\ApplicationDefinition.cs" />
+    <Compile Include="Classes\PolicySet.cs" />
+    <Compile Include="Classes\PolicyRule.cs" />
+    <Compile Include="Classes\SecurityZone.cs" />
+    <Compile Include="Classes\SiteSecurityZone.cs" />
+    <Compile Include="Classes\SecurityPolicySet.cs" />
+    <Compile Include="Classes\SecurityPolicyRule.cs" />
+    <Compile Include="Classes\TopNQuery.cs" />
+    <Compile Include="Classes\MetricsQuery.cs" />
+    <Compile Include="Classes\MetricsResponse.cs" />
+    <Compile Include="Classes\TopNResponse.cs" />
+    <Compile Include="Classes\FlowResponse.cs" />
+    <Compile Include="Classes\FlowQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Api\" />
+    <Folder Include="Documentation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Documentation\ReleaseNotes.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

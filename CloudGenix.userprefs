@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{1EFD5CAB-513C-47C4-8504-2F050F7A47D8}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudGenixSdk/Classes/Common.cs">
+    <Files>
+      <File FileName="CloudGenixSdk/CgnxController.cs" Line="866" Column="56" />
+      <File FileName="SdkCli/Program.cs" Line="925" Column="18" />
+      <File FileName="CloudGenixSdk/Documentation/ReleaseNotes.txt" Line="18" Column="17" />
+      <File FileName="CloudGenixSdk/Classes/FlowResponse.cs" Line="304" Column="1" />
+      <File FileName="CloudGenixSdk/Classes/MetricsQuery.cs" Line="307" Column="1" />
+      <File FileName="CloudGenixSdk/Classes/FlowQuery.cs" Line="95" Column="46" />
+      <File FileName="CloudGenixSdk/Classes/EndpointManager.cs" Line="34" Column="44" />
+      <File FileName="CloudGenixSdk/Classes/Common.cs" Line="183" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.SdkCli PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

@@ -1,0 +1,12 @@
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/obj/Debug/SdkCli.csprojResolveAssemblyReference.cache
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/obj/Debug/SdkCli.csproj.CoreCompileInputs.cache
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/SdkCli.exe
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/SdkCli.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/CloudGenixSdk.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/RestWrapper.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/Newtonsoft.Json.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/CloudGenixSdk.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/RestWrapper.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/bin/Debug/Newtonsoft.Json.xml
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/obj/Debug/SdkCli.exe
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/SdkCli/obj/Debug/SdkCli.pdb

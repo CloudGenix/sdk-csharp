@@ -1,0 +1,20 @@
+﻿===
+Version 1.0.0
+To do:
+- Class definitions for (object) class members
+- Documentation
+- Flow browser
+
+Bugs:
+- Class definition for the following classes contain several 'object' instead of actual types.  For these classes, objects will need to be cast prior to use.
+  - ElementInterface 
+  - ElementInterfaceStatus
+  - IpV4Configuration
+  - WanNetwork
+  - LanNetwork
+  - ApplicationDefinition
+  - PolicySet
+  - PolicyRule
+  - FlowResponse
+- Parameters in MetricsQuery should really be enumerations rather than strings
+

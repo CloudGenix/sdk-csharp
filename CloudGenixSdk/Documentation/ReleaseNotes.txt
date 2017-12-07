@@ -2,8 +2,11 @@
 Version 1.0.0
 To do:
 - Class definitions for (object) class members
-- Documentation
-- Flow browser
+- Documentation 
+- Site WAN Interfaces API
+- Site Health (Topology) API
+- SNMP Configuration Retrieval API
+- Events API
 
 Bugs:
 - Class definition for the following classes contain several 'object' instead of actual types.  For these classes, objects will need to be cast prior to use.

@@ -1029,6 +1029,50 @@ namespace CloudGenix
             return true;
         }
 
+        public bool GetEvents(EventQuery query, out EventResponse events)
+        {
+            events = null;
+            if (query == null) throw new ArgumentNullException(nameof(query));
+
+            string url = BuildUrl("query_events");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+
+            Debug.WriteLine("GetEvents sending query: ");
+            Debug.WriteLine(Common.SerializeJson(query, true));
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetEvents no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetEvents non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetEvents no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetEvents response: " + Encoding.UTF8.GetString(resp.Data));
+
+            events = Common.DeserializeJson<EventResponse>(resp.Data);
+            return true;
+        }
+
         #endregion
 
         #region Private-Methods

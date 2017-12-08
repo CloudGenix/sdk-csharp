@@ -1,12 +1,10 @@
 ﻿<Properties StartupConfiguration="{1EFD5CAB-513C-47C4-8504-2F050F7A47D8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudGenixSdk/Classes/SnmpAgent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudGenixSdk/Documentation/ReleaseNotes.txt">
     <Files>
-      <File FileName="CloudGenixSdk/CgnxController.cs" Line="952" Column="25" />
-      <File FileName="SdkCli/Program.cs" Line="683" Column="18" />
-      <File FileName="CloudGenixSdk/Documentation/ReleaseNotes.txt" Line="5" Column="18" />
-      <File FileName="CloudGenixSdk/Classes/Topology.cs" Line="20" Column="9" />
-      <File FileName="CloudGenixSdk/Classes/Site.cs" Line="73" Column="1" />
-      <File FileName="CloudGenixSdk/Classes/SnmpAgent.cs" Line="53" Column="20" />
+      <File FileName="CloudGenixSdk/CgnxController.cs" Line="1041" Column="29" />
+      <File FileName="SdkCli/Program.cs" Line="1129" Column="22" />
+      <File FileName="CloudGenixSdk/Documentation/ReleaseNotes.txt" Line="4" Column="21" />
+      <File FileName="CloudGenixSdk/Classes/Common.cs" Line="183" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

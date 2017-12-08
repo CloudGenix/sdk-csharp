@@ -34,6 +34,7 @@ namespace CloudGenix.Classes
             AddVersion("logout", "v2.0");
             AddVersion("permissions", "v2.0");
             AddVersion("profile", "v2.0");
+            AddVersion("query_events", "v2.0");
 
             // endpoints that are needed prior to pulling permissions or require overload
             AddEndpoint("login", "/%s/api/login");
@@ -41,6 +42,7 @@ namespace CloudGenix.Classes
             AddEndpoint("permissions", "/%s/api/permissions");
             AddEndpoint("profile", "/%s/api/profile");
             AddEndpoint("flows_monitor", "/%s/api/tenants/%s/monitor/flows");
+            AddEndpoint("query_events", "/%s/api/tenants/%s/events/query");
         }
 
         #endregion
@@ -158,13 +160,23 @@ namespace CloudGenix.Classes
             {
                 #region Regex
 
-                src = src.Replace("(", "");
-                src = src.Replace(")", "");
+                // "query_events":"v(2\\.0|3\\.0)"
+                // "query_events":"/%s/api/tenants/%s/events/query"
+                ver = ver.Replace("v(", "");
+                ver = ver.Replace("(", "");
+                ver = ver.Replace(")", "");
 
-                string last = "v" + ver.Substring(src.LastIndexOf('|') + 1);
-                while (last.Contains("\\"))
+                while (ver.Contains("\\"))
                 {
-                    last = last.Replace("\\", "");
+                    ver = ver.Replace("\\", "");
+                }
+
+                string last = "";
+                string[] versions = ver.Split('|');
+
+                foreach (string curr in versions)
+                {
+                    last = "v" + curr;    
                 }
 
                 src = Common.StringReplaceFirst(src, "%s", last);

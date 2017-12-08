@@ -77,6 +77,8 @@
     <Compile Include="Classes\SiteWanInterface.cs" />
     <Compile Include="Classes\Topology.cs" />
     <Compile Include="Classes\SnmpAgent.cs" />
+    <Compile Include="Classes\EventResponse.cs" />
+    <Compile Include="Classes\EventQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />

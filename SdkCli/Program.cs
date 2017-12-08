@@ -46,6 +46,9 @@ namespace SdkCli
         private static FlowQuery _FlowQuery = null;
         private static FlowResponse _FlowResponse = null;
 
+        private static EventQuery _EventQuery = null;
+        private static EventResponse _EventResponse = null; 
+
         #endregion
 
         #region Constructors-and-Factories
@@ -268,6 +271,26 @@ namespace SdkCli
 
                     #endregion
 
+                    #region Events-Commands
+ 
+                    case "events clear":
+                        ClearEventsQuery();
+                        break;
+
+                    case "events show":
+                        ShowEventsQuery();
+                        break;
+
+                    case "events build":
+                        BuildEventsQuery();
+                        break;
+
+                    case "events submit":
+                        SendEventsQuery();
+                        break;
+                         
+                    #endregion
+
                     default:
                         break;
                 }
@@ -307,6 +330,8 @@ namespace SdkCli
             Console.WriteLine("                 | clear   show   build   addfilter   submit");
             Console.WriteLine("  flows <cmd>    retrieve flows");
             Console.WriteLine("                 | clear   show   build   addfilter   submit");
+            Console.WriteLine("  events <cmd>   retrieve events");
+            Console.WriteLine("                 | clear   show   build   submit   summary");
             Console.WriteLine("");
         }
 
@@ -802,7 +827,7 @@ namespace SdkCli
             }
 
             try
-            { 
+            {
                 string appId = Common.InputString("App ID    :", null, true);
                 string dir = Common.InputString("Direction :", null, true);
                 string pType = Common.InputString("Path type :", null, true);
@@ -974,9 +999,9 @@ namespace SdkCli
         {
             Console.WriteLine("Supply timestamps in the form of yyyy-MM-ddTHH:mm:ss.zzzZ");
 
-            string startTime =  Common.InputString("Start time  :", null, false);
-            string endTime =    Common.InputString("End time    :", null, false);
-            string debugLevel = Common.InputString("Debug level :", "all", false); 
+            string startTime = Common.InputString("Start time  :", null, false);
+            string endTime = Common.InputString("End time    :", null, false);
+            string debugLevel = Common.InputString("Debug level :", "all", false);
 
             try
             {
@@ -1047,6 +1072,68 @@ namespace SdkCli
             {
                 Console.WriteLine("Success");
                 if (_FlowResponse != null) Console.WriteLine(Common.SerializeJson(_FlowResponse, true));
+                else Console.WriteLine("(null)");
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+            }
+        }
+
+        #endregion
+
+        #region Events-APIs
+         
+        private static void ClearEventsQuery()
+        {
+            _EventQuery = null;
+            Console.WriteLine("Cleared");
+        }
+
+        private static void ShowEventsQuery()
+        {
+            if (_EventQuery == null)
+            {
+                Console.WriteLine("Please build an events query first");
+                return;
+            }
+
+            Console.WriteLine(Common.SerializeJson(_EventQuery, true));
+        }
+
+        private static void BuildEventsQuery()
+        {
+            Console.WriteLine("Supply timestamps in the form of yyyy-MM-ddTHH:mm:ss.zzzZ");
+
+            string startTime = Common.InputString("Start time  :", null, false);
+            string endTime = Common.InputString("End time    :", null, false);
+            string offset = Common.InputString("Offset      :", null, true);
+            string queryType = Common.InputString("Query type  :", null, true);
+            bool summary = Common.InputBoolean("Summary     :", true);
+
+            try
+            {
+                _EventQuery = new EventQuery(startTime, endTime, offset, queryType, summary);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+                return;
+            }
+        }
+
+        private static void SendEventsQuery()
+        {
+            if (_EventQuery == null)
+            {
+                Console.WriteLine("Please build an events query first");
+                return;
+            }
+
+            if (_Cgnx.GetEvents(_EventQuery, out _EventResponse))
+            {
+                Console.WriteLine("Success");
+                if (_EventResponse != null) Console.WriteLine(Common.SerializeJson(_EventResponse, true));
                 else Console.WriteLine("(null)");
             }
             else

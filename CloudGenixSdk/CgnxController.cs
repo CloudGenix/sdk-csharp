@@ -895,6 +895,51 @@ namespace CloudGenix
             return true;
         }
 
+        public bool GetSiteWanInterfaces(string siteId, out List<SiteWanInterface> interfaces)
+        {
+            interfaces = null;
+            if (String.IsNullOrEmpty(siteId)) throw new ArgumentNullException(nameof(siteId));
+
+            string url = BuildUrl("waninterfaces");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+            url = Common.StringReplaceFirst(url, "%s", siteId);
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "GET",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                null);
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetSiteWanInterfaces no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetSiteWanInterfaces non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetSiteWanInterfaces no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetSiteWanInterfaces response: " + Encoding.UTF8.GetString(resp.Data));
+
+            ResourceResponse resResp = Common.DeserializeJson<ResourceResponse>(resp.Data);
+            interfaces = resResp.GetItems<List<SiteWanInterface>>();
+
+            Debug.WriteLine("GetSiteWanInterfaces returning " + interfaces.Count + " site WAN interface(s)");
+            return true;
+        }
+
         #endregion
 
         #region Private-Methods

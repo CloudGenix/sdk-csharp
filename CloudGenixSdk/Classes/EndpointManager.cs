@@ -29,11 +29,13 @@ namespace CloudGenix.Classes
             _Versions = new Dictionary<string, string>();
             _Endpoints = new Dictionary<string, string>();
 
+            // overload versions
             AddVersion("login", "v2.0");
             AddVersion("logout", "v2.0");
             AddVersion("permissions", "v2.0");
             AddVersion("profile", "v2.0");
 
+            // endpoints that are needed prior to pulling permissions or require overload
             AddEndpoint("login", "/%s/api/login");
             AddEndpoint("logout", "/%s/api/logout");
             AddEndpoint("permissions", "/%s/api/permissions");

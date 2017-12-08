@@ -7,3 +7,4 @@
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenix.csproj.CoreCompileInputs.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenixSdk.dll
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenixSdk.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenix.csprojResolveAssemblyReference.cache

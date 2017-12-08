@@ -2,10 +2,7 @@
 Version 1.0.0
 To do:
 - Class definitions for (object) class members
-- Documentation 
-- Test and document Site WAN Interfaces API
-- Site Health (Topology) API
-- SNMP Configuration Retrieval API
+- Documentation   
 - Events API
 
 Bugs:

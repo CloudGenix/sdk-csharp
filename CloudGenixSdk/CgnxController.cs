@@ -940,6 +940,95 @@ namespace CloudGenix
             return true;
         }
 
+        public bool GetSiteTopology(string siteId, out Topology topology)
+        {
+            topology = null;
+            if (String.IsNullOrEmpty(siteId)) throw new ArgumentNullException(nameof(siteId));
+
+            string url = BuildUrl("topology");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+            url = Common.StringReplaceFirst(url, "%s", siteId);
+ 
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                TopologyRequest(siteId));
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetSiteTopology no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetSiteTopology non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetSiteTopology no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetSiteTopology response: " + Encoding.UTF8.GetString(resp.Data));
+
+            topology = Common.DeserializeJson<Topology>(resp.Data);
+            return true;
+        }
+
+        public bool GetSnmpAgents(string siteId, string elementId, out List<SnmpAgent> agents)
+        {
+            agents = null;
+            if (String.IsNullOrEmpty(siteId)) throw new ArgumentNullException(nameof(siteId));
+            if (String.IsNullOrEmpty(elementId)) throw new ArgumentNullException(nameof(elementId));
+
+            string url = BuildUrl("snmpagents");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+            url = Common.StringReplaceFirst(url, "%s", siteId);
+            url = Common.StringReplaceFirst(url, "%s", elementId);
+ 
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "GET",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                null);
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetSnmpAgents no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetSnmpAgents non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetSnmpAgents no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetSnmpAgents response: " + Encoding.UTF8.GetString(resp.Data));
+
+            ResourceResponse resResp = Common.DeserializeJson<ResourceResponse>(resp.Data);
+            agents = resResp.GetItems<List<SnmpAgent>>();
+
+            Debug.WriteLine("GetSnmpAgents returning " + agents.Count + " SNMP agent(s)");
+            return true;
+        }
+
         #endregion
 
         #region Private-Methods
@@ -949,6 +1038,15 @@ namespace CloudGenix
             Dictionary<string, string> ret = new Dictionary<string, string>();
             ret.Add("email", Email);
             ret.Add("password", Password);
+            return Encoding.UTF8.GetBytes(Common.SerializeJson(ret, true));
+        }
+
+        private byte[] TopologyRequest(string siteId)
+        {
+            Dictionary<string, object> ret = new Dictionary<string, object>();
+            ret.Add("type", "basenet");
+            List<string> nodes = new List<string>() { siteId };
+            ret.Add("nodes", nodes);
             return Encoding.UTF8.GetBytes(Common.SerializeJson(ret, true));
         }
 

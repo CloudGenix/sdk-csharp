@@ -25,6 +25,8 @@ namespace SdkCli
         private static List<WanNetwork> _WanNetworks = null;
         private static List<LanNetwork> _LanNetworks = null;
         private static List<SiteWanInterface> _SiteWanInterfaces = null;
+        private static Topology _SiteTopology = null;
+        private static List<SnmpAgent> _SnmpAgents = null;
 
         private static List<ApplicationDefinition> _ApplicationDefinitions = null;
         private static List<PolicySet> _PolicySets = null;
@@ -180,6 +182,14 @@ namespace SdkCli
                         GetSiteWanInterfaces();
                         break;
 
+                    case "get topology":
+                        GetSiteTopology();
+                        break;
+
+                    case "get snmpagents":
+                        GetSnmpAgents();
+                        break;
+
                     #endregion
 
                     #region Metrics-Commands
@@ -290,7 +300,7 @@ namespace SdkCli
             Console.WriteLine("                 | contexts   sites   elements   interfaces   ifstatus");
             Console.WriteLine("                 | wans   lans   appdefs   policysets   policyrules");
             Console.WriteLine("                 | seczones   siteseczones   secpolsets   secpolrules");
-            Console.WriteLine("                 | sitewanifs");
+            Console.WriteLine("                 | sitewanifs   topology   snmpagents");
             Console.WriteLine("  metrics <cmd>  retrieve metrics");
             Console.WriteLine("                 | clear   show   build   addmetric   addfilter   submit");
             Console.WriteLine("  topn <cmd>     retrieve top N statistics");
@@ -650,6 +660,54 @@ namespace SdkCli
                 if (_SiteWanInterfaces != null)
                 {
                     foreach (SiteWanInterface curr in _SiteWanInterfaces)
+                    {
+                        Console.WriteLine(curr.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("(null)");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+            }
+        }
+
+        private static void GetSiteTopology()
+        {
+            if (_Cgnx.GetSiteTopology(
+                Common.InputString("Site ID :", null, false),
+                out _SiteTopology))
+            {
+                Console.WriteLine("Success");
+                if (_SiteTopology != null)
+                {
+                    Console.WriteLine(Common.SerializeJson(_SiteTopology, true));
+                }
+                else
+                {
+                    Console.WriteLine("(null)");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+            }
+        }
+
+        private static void GetSnmpAgents()
+        {
+            if (_Cgnx.GetSnmpAgents(
+                Common.InputString("Site ID    :", null, false),
+                Common.InputString("Element ID :", null, false),
+                out _SnmpAgents))
+            {
+                Console.WriteLine("Success");
+                if (_SnmpAgents != null)
+                {
+                    foreach (SnmpAgent curr in _SnmpAgents)
                     {
                         Console.WriteLine(curr.ToString());
                     }

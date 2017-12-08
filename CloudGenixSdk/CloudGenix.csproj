@@ -75,6 +75,8 @@
     <Compile Include="Classes\FlowResponse.cs" />
     <Compile Include="Classes\FlowQuery.cs" />
     <Compile Include="Classes\SiteWanInterface.cs" />
+    <Compile Include="Classes\Topology.cs" />
+    <Compile Include="Classes\SnmpAgent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />

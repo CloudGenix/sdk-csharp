@@ -314,6 +314,7 @@ namespace SdkCli
             //                          1         2         3         4         5         6         7         
             //                 1234567890123456789012345678901234567890123456789012345678901234567890123456789
             Console.WriteLine("CloudGenix Controller -- Available Commands");
+            Console.WriteLine("  ?              help, this menu");
             Console.WriteLine("  q              quit");
             Console.WriteLine("  cls            clear console");
             Console.WriteLine("  logout         logout of the controller session");
@@ -331,7 +332,7 @@ namespace SdkCli
             Console.WriteLine("  flows <cmd>    retrieve flows");
             Console.WriteLine("                 | clear   show   build   addfilter   submit");
             Console.WriteLine("  events <cmd>   retrieve events");
-            Console.WriteLine("                 | clear   show   build   submit   summary");
+            Console.WriteLine("                 | clear   show   build   submit");
             Console.WriteLine("");
         }
 

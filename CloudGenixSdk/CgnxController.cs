@@ -769,132 +769,6 @@ namespace CloudGenix
             return true;
         }
 
-        public bool GetMetrics(MetricsQuery query, out MetricsResponse metrics)
-        {
-            metrics = null;
-            if (query == null) throw new ArgumentNullException(nameof(query));
-
-            string url = BuildUrl("metrics_monitor");
-            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
-
-            RestResponse resp = RestRequest.SendRequestSafe(
-                url,
-                "application/json",
-                "POST",
-                null, null, false, IgnoreCertErrors,
-                _AuthHeaders,
-                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
-
-            if (resp == null)
-            {
-                Debug.WriteLine("GetMetrics no response received from server for URL " + url);
-                return false;
-            }
-
-            if (resp.StatusCode != 200 && resp.StatusCode != 201)
-            {
-                Debug.WriteLine("GetMetrics non-200/201 status returned from server for URL " + url);
-                Debug.WriteLine("Request:");
-                Debug.WriteLine(Common.SerializeJson(query, true));
-                Debug.WriteLine(resp.ToString());
-                return false;
-            }
-
-            if (resp.Data == null || resp.Data.Length < 1)
-            {
-                Debug.WriteLine("GetMetrics no data returned from server for URL " + url);
-                return false;
-            }
-
-            Debug.WriteLine("GetMetrics response: " + Encoding.UTF8.GetString(resp.Data));
-            metrics = Common.DeserializeJson<MetricsResponse>(resp.Data);  
-            return true;
-        }
-
-        public bool GetTopN(TopNQuery query, out TopNResponse topn)
-        {
-            topn = null;
-            if (query == null) throw new ArgumentNullException(nameof(query));
-
-            string url = BuildUrl("topn_monitor");
-            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
-
-            RestResponse resp = RestRequest.SendRequestSafe(
-                url,
-                "application/json",
-                "POST",
-                null, null, false, IgnoreCertErrors,
-                _AuthHeaders,
-                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
-
-            if (resp == null)
-            {
-                Debug.WriteLine("GetTopN no response received from server for URL " + url);
-                return false;
-            }
-
-            if (resp.StatusCode != 200 && resp.StatusCode != 201)
-            {
-                Debug.WriteLine("GetTopN non-200/201 status returned from server for URL " + url);
-                Debug.WriteLine("Request:");
-                Debug.WriteLine(Common.SerializeJson(query, true));
-                Debug.WriteLine(resp.ToString());
-                return false;
-            }
-
-            if (resp.Data == null || resp.Data.Length < 1)
-            {
-                Debug.WriteLine("GetTopN no data returned from server for URL " + url);
-                return false;
-            }
-
-            Debug.WriteLine("GetTopN response: " + Encoding.UTF8.GetString(resp.Data));
-            topn = Common.DeserializeJson<TopNResponse>(resp.Data);
-            return true;
-        }
-
-        public bool GetFlows(FlowQuery query, out FlowResponse flows)
-        {
-            flows = null;
-            if (query == null) throw new ArgumentNullException(nameof(query));
-
-            string url = BuildUrl("flows_monitor");
-            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
-
-            RestResponse resp = RestRequest.SendRequestSafe(
-                url,
-                "application/json",
-                "POST",
-                null, null, false, IgnoreCertErrors,
-                _AuthHeaders,
-                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
-
-            if (resp == null)
-            {
-                Debug.WriteLine("GetFlows no response received from server for URL " + url);
-                return false;
-            }
-
-            if (resp.StatusCode != 200 && resp.StatusCode != 201)
-            {
-                Debug.WriteLine("GetFlows non-200/201 status returned from server for URL " + url);
-                Debug.WriteLine("Request:");
-                Debug.WriteLine(Common.SerializeJson(query, true));
-                Debug.WriteLine(resp.ToString());
-                return false;
-            }
-
-            if (resp.Data == null || resp.Data.Length < 1)
-            {
-                Debug.WriteLine("GetFlows no data returned from server for URL " + url);
-                return false;
-            }
-
-            Debug.WriteLine("GetFlows response: " + Encoding.UTF8.GetString(resp.Data));
-            flows = Common.DeserializeJson<FlowResponse>(resp.Data);
-            return true;
-        }
-
         public bool GetSiteWanInterfaces(string siteId, out List<SiteWanInterface> interfaces)
         {
             interfaces = null;
@@ -1029,6 +903,48 @@ namespace CloudGenix
             return true;
         }
 
+        public bool GetMetrics(MetricsQuery query, out MetricsResponse metrics)
+        {
+            metrics = null;
+            if (query == null) throw new ArgumentNullException(nameof(query));
+
+            string url = BuildUrl("metrics_monitor");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetMetrics no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetMetrics non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine("Request:");
+                Debug.WriteLine(Common.SerializeJson(query, true));
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetMetrics no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetMetrics response: " + Encoding.UTF8.GetString(resp.Data));
+            metrics = Common.DeserializeJson<MetricsResponse>(resp.Data);
+            return true;
+        }
+
         public bool GetEvents(EventQuery query, out EventResponse events)
         {
             events = null;
@@ -1070,6 +986,90 @@ namespace CloudGenix
             Debug.WriteLine("GetEvents response: " + Encoding.UTF8.GetString(resp.Data));
 
             events = Common.DeserializeJson<EventResponse>(resp.Data);
+            return true;
+        }
+
+        public bool GetTopN(TopNQuery query, out TopNResponse topn)
+        {
+            topn = null;
+            if (query == null) throw new ArgumentNullException(nameof(query));
+
+            string url = BuildUrl("topn_monitor");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetTopN no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetTopN non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine("Request:");
+                Debug.WriteLine(Common.SerializeJson(query, true));
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetTopN no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetTopN response: " + Encoding.UTF8.GetString(resp.Data));
+            topn = Common.DeserializeJson<TopNResponse>(resp.Data);
+            return true;
+        }
+
+        public bool GetFlows(FlowQuery query, out FlowResponse flows)
+        {
+            flows = null;
+            if (query == null) throw new ArgumentNullException(nameof(query));
+
+            string url = BuildUrl("flows_monitor");
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                Encoding.UTF8.GetBytes(Common.SerializeJson(query, true)));
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetFlows no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetFlows non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine("Request:");
+                Debug.WriteLine(Common.SerializeJson(query, true));
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetFlows no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetFlows response: " + Encoding.UTF8.GetString(resp.Data));
+            flows = Common.DeserializeJson<FlowResponse>(resp.Data);
             return true;
         }
 

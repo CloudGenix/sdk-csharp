@@ -7,3 +7,13 @@
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenix.csproj.CoreCompileInputs.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenixSdk.dll
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/CloudGenixSdk/obj/Debug/CloudGenixSdk.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/bin/Debug/CloudGenixSdk.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/bin/Debug/CloudGenixSdk.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/bin/Debug/Newtonsoft.Json.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/bin/Debug/RestWrapper.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/bin/Debug/RestWrapper.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/bin/Debug/Newtonsoft.Json.xml
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/obj/Debug/CloudGenix.csprojResolveAssemblyReference.cache
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/obj/Debug/CloudGenix.csproj.CoreCompileInputs.cache
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/obj/Debug/CloudGenixSdk.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/CloudGenixSdk/obj/Debug/CloudGenixSdk.pdb

@@ -1,12 +1,5 @@
 ﻿<Properties StartupConfiguration="{1EFD5CAB-513C-47C4-8504-2F050F7A47D8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SdkCli/Program.cs">
-    <Files>
-      <File FileName="CloudGenixSdk/CgnxController.cs" Line="1053" Column="19" />
-      <File FileName="CloudGenixSdk/Classes/FlowQuery.cs" Line="14" Column="1" />
-      <File FileName="CloudGenixSdk/Classes/FlowResponse.cs" Line="14" Column="1" />
-      <File FileName="SdkCli/Program.cs" Line="1147" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

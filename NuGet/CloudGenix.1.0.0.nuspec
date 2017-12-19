@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>CloudGenix</id>
+        <version>1.0.0</version>
+        <title>CloudGenix Controller SDK</title>
+        <authors>jchristn</authors>
+        <owners>jchristn</owners>
+        <projectUrl>https://github.com/cloudgenix</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>CloudGenix Controller SDK</description>
+        <summary>CloudGenix Controller SDK</summary>
+        <releaseNotes>Please read the README file prior to use</releaseNotes>
+        <copyright>(c)2017 CloudGenix, Inc</copyright>
+        <tags>sdn sdwan networking wan cloudgenix</tags>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="10.0.3" />
+            <dependency id="RestWrapper" version="1.0.8" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\CloudGenixSdk\bin\Release\CloudGenixSdk.dll" target="lib\CloudGenixSdk.dll" />
+    </files>
+</package>

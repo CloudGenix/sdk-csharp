@@ -50,7 +50,7 @@ namespace CloudGenix.Classes
             AddVersion("logout", "v2.0");
             AddVersion("permissions", "v2.0");
             AddVersion("profile", "v2.0");
-            AddVersion("query_events", "v2.0");
+            AddVersion("query_events", "v3.0");
 
             // endpoints that are needed prior to pulling permissions or require overload
             AddEndpoint("login", "/%s/api/login");

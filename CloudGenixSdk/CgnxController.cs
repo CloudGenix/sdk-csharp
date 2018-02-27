@@ -28,7 +28,7 @@ using Newtonsoft.Json.Linq;
 
 namespace CloudGenix
 {
-    public class CgnxController
+    public class CgnxController : IDisposable
     {
         #region Public-Members
 
@@ -43,6 +43,8 @@ namespace CloudGenix
 
         #region Private-Members
 
+        private bool _LoggedIn = false;
+        private bool _Disposed = false;
         private Dictionary<string, string> _AuthHeaders = null;
         private EndpointManager _Endpoints;
 
@@ -72,6 +74,12 @@ namespace CloudGenix
         #endregion
 
         #region Public-Methods
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         public bool Login()
         {
@@ -133,6 +141,8 @@ namespace CloudGenix
             GetTenantId();
 
             Debug.WriteLine("Login authenticated successfully");
+
+            _LoggedIn = true;
 
             return true;
         }
@@ -1092,7 +1102,22 @@ namespace CloudGenix
         #endregion
 
         #region Private-Methods
-         
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_Disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                if (_LoggedIn) Logout();
+            }
+
+            _Disposed = true;
+        }
+
         private byte[] LoginRequest()
         {
             Dictionary<string, string> ret = new Dictionary<string, string>();

@@ -108,13 +108,13 @@ namespace CloudGenix.Classes
             public string Code { get; set; }
 
             [JsonProperty("correlation_id")]
-            public string CorrelationId { get; set; }
+            public string CorrelationID { get; set; }
 
             [JsonProperty("entity_ref")]
             public string EntityRef { get; set; }
 
             [JsonProperty("info")]
-            public object Info { get; set; }
+            public Dictionary<string, object> Info { get; set; }
 
             [JsonProperty("severity")]
             public string Severity { get; set; }
@@ -134,7 +134,7 @@ namespace CloudGenix.Classes
              
             public override string ToString()
             {
-                return string.Format("[EventDetails: Id={0}, Cleared={1}, Code={2}, CorrelationId={3}, EntityRef={4}, Info={5}, Severity={6}, SiteId={7}, Timestamp={8}, Type={9}]", Id, Cleared, Code, CorrelationId, EntityRef, Info, Severity, SiteId, Timestamp, Type);
+                return string.Format("[EventDetails: Id={0}, Cleared={1}, Code={2}, CorrelationId={3}, EntityRef={4}, Info={5}, Severity={6}, SiteId={7}, Timestamp={8}, Type={9}]", Id, Cleared, Code, CorrelationID, EntityRef, Info, Severity, SiteId, Timestamp, Type);
             }
         }
 

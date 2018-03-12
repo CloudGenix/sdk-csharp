@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CloudGenix, Inc.")]
 [assembly: AssemblyProduct("Test Application for CloudGenix Controller SDK")]
-[assembly: AssemblyCopyright("(c)2017 CloudGenix, Inc.")]
+[assembly: AssemblyCopyright("(c)2018 CloudGenix, Inc.")]
 [assembly: AssemblyTrademark("(TM) CloudGenix, Inc.")]
 [assembly: AssemblyCulture("")]
 
@@ -18,8 +18,8 @@ using System.Runtime.CompilerServices;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.0.3.0")]
+[assembly: AssemblyFileVersion("1.0.3.0")]
 [assembly: Guid("00000000-0000-0000-0000-000000000000")]
 
 // The following attributes are used to specify the signing key for the assembly, 

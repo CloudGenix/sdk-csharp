@@ -1,11 +1,3 @@
-D:/Code/CloudGenix/sdk-csharp/SdkCli/bin/Release/SdkCli.exe
-D:/Code/CloudGenix/sdk-csharp/SdkCli/bin/Release/CloudGenixSdk.dll
-D:/Code/CloudGenix/sdk-csharp/SdkCli/bin/Release/RestWrapper.dll
-D:/Code/CloudGenix/sdk-csharp/SdkCli/bin/Release/Newtonsoft.Json.dll
-D:/Code/CloudGenix/sdk-csharp/SdkCli/bin/Release/RestWrapper.pdb
-D:/Code/CloudGenix/sdk-csharp/SdkCli/bin/Release/Newtonsoft.Json.xml
-D:/Code/CloudGenix/sdk-csharp/SdkCli/obj/Release/SdkCli.csprojResolveAssemblyReference.cache
-D:/Code/CloudGenix/sdk-csharp/SdkCli/obj/Release/SdkCli.exe
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SdkCli/bin/Release/SdkCli.exe
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SdkCli/bin/Release/CloudGenixSdk.dll
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SdkCli/bin/Release/RestWrapper.dll
@@ -15,3 +7,11 @@ D:/Code/CloudGenix/sdk-csharp/SdkCli/obj/Release/SdkCli.exe
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SdkCli/obj/Release/SdkCli.csprojResolveAssemblyReference.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SdkCli/obj/Release/SdkCli.csproj.CoreCompileInputs.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SdkCli/obj/Release/SdkCli.exe
+D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Release\SdkCli.csprojResolveAssemblyReference.cache
+D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Release\SdkCli.exe
+D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\SdkCli.exe
+D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\CloudGenixSdk.dll
+D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\RestWrapper.dll
+D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\Newtonsoft.Json.dll
+D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\RestWrapper.pdb
+D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\Newtonsoft.Json.xml

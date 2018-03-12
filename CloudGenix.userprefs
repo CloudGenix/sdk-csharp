@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{1EFD5CAB-513C-47C4-8504-2F050F7A47D8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudGenixSdk/CgnxController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SamlTest/Program.cs">
     <Files>
-      <File FileName="SdkCli/Program.cs" Line="20" Column="18" />
-      <File FileName="CloudGenixSdk/Classes/EventQuery.cs" Line="93" Column="9" />
-      <File FileName="CloudGenixSdk/Classes/EventResponse.cs" Line="37" Column="41" />
-      <File FileName="CloudGenixSdk/CgnxController.cs" Line="50" Column="9" />
+      <File FileName="CloudGenixSdk/CgnxController.cs" Line="293" Column="45" />
+      <File FileName="SdkCli/Program.cs" Line="35" Column="9" />
       <File FileName="CloudGenixSdk/Classes/EndpointManager.cs" Line="53" Column="43" />
+      <File FileName="SamlTest/Program.cs" Line="39" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

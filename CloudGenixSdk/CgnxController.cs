@@ -43,6 +43,7 @@ namespace CloudGenix
 
         #region Private-Members
 
+        private string _SamlRequestId = null;
         private bool _LoggedIn = false;
         private bool _Disposed = false;
         private Dictionary<string, string> _AuthHeaders = null;
@@ -52,6 +53,11 @@ namespace CloudGenix
 
         #region Constructors-and-Factories
 
+        /// <summary>
+        /// Initializes CloudGenix SDK for credential-based login.
+        /// </summary>
+        /// <param name="email">Email.</param>
+        /// <param name="password">Password.</param>
         public CgnxController(string email, string password)
         {
             if (String.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email));
@@ -60,6 +66,24 @@ namespace CloudGenix
             IgnoreCertErrors = true;
             Email = email;
             Password = password;
+            Endpoint = "https://api.cloudgenix.com:443";
+
+            _Endpoints = new EndpointManager();
+
+            Debug.WriteLine("CgnxController initialized");
+        }
+
+        /// <summary>
+        /// Initializes CloudGenix SDK for SAML login.
+        /// </summary>
+        /// <param name="email">Email.</param>
+        public CgnxController(string email)
+        {
+            if (String.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email)); 
+
+            IgnoreCertErrors = true;
+            Email = email;
+            Password = null;
             Endpoint = "https://api.cloudgenix.com:443";
 
             _Endpoints = new EndpointManager();
@@ -141,6 +165,132 @@ namespace CloudGenix
             GetTenantId();
 
             Debug.WriteLine("Login authenticated successfully");
+
+            _LoggedIn = true;
+
+            return true;
+        }
+
+        public bool LoginSamlStart(out string loginUrl)
+        {
+            loginUrl = null;
+            string url = BuildUrl("login");
+
+            _AuthHeaders = new Dictionary<string, string>();
+            string refererUrl = Endpoint + "/v2.0/api/login";
+            _AuthHeaders.Add("Referer", refererUrl);
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                LoginSamlStartRequest());
+
+            if (resp == null)
+            {
+                Debug.WriteLine("LoginSamlStart no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("LoginSamlStart non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("LoginSamlStart no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("LoginSamlStart response: " + Encoding.UTF8.GetString(resp.Data));
+
+            Dictionary<string, object> respDict = Common.DeserializeJson<Dictionary<string, object>>(resp.Data);
+            if (!respDict.ContainsKey("requestId"))
+            {
+                Debug.WriteLine("LoginSamlStart no requestId key found in response data");
+                return false;
+            }
+            else
+            {
+                _SamlRequestId = respDict["requestId"].ToString();
+            }
+
+            if (!respDict.ContainsKey("urlpath"))
+            {
+                Debug.WriteLine("LoginSamlStart no urlpath key found in response data");
+                return false;
+            }
+    
+            loginUrl = respDict["urlpath"].ToString();
+            Debug.WriteLine("LoginSamlStart referring user to URL " + loginUrl);
+            return true; 
+        }
+
+        public bool LoginSamlFinish()
+        { 
+            string url = BuildUrl("login");
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                LoginSamlFinishRequest());
+
+            if (resp == null)
+            {
+                Debug.WriteLine("LoginSamlFinish no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("LoginSamlFinish non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("LoginSamlFinish no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("LoginSamlFinish response: " + Encoding.UTF8.GetString(resp.Data));
+
+            Dictionary<string, object> respDict = Common.DeserializeJson<Dictionary<string, object>>(resp.Data);
+            if (!respDict.ContainsKey("x_auth_token"))
+            {
+                Debug.WriteLine("LoginSamlFinish no x_auth_token key found in response data");
+                return false;
+            }
+            else
+            {
+                BuildAuthHeaders(respDict["x_auth_token"].ToString());
+                AuthToken = respDict["x_auth_token"].ToString();
+            }
+
+            if (respDict.ContainsKey("api_endpoint") && !String.IsNullOrEmpty(respDict["api_endpoint"].ToString()))
+            {
+                Debug.WriteLine("LoginSamlFinish new API endpoint found in response: " + respDict["api_endpoint"]);
+                Endpoint = respDict["api_endpoint"].ToString();
+
+                if (!Endpoint.EndsWith("/")) Endpoint += "/";
+            }
+
+            Debug.WriteLine("LoginSamlFinish building endpoints");
+            BuildEndpoints();
+
+            Debug.WriteLine("LoginSamlFinish retrieving tenant ID");
+            GetTenantId();
+
+            Debug.WriteLine("LoginSamlFinish authenticated successfully");
 
             _LoggedIn = true;
 
@@ -1123,6 +1273,21 @@ namespace CloudGenix
             Dictionary<string, string> ret = new Dictionary<string, string>();
             ret.Add("email", Email);
             ret.Add("password", Password);
+            return Encoding.UTF8.GetBytes(Common.SerializeJson(ret, true));
+        }
+
+        private byte[] LoginSamlStartRequest()
+        {
+            Dictionary<string, string> ret = new Dictionary<string, string>();
+            ret.Add("email", Email);
+            return Encoding.UTF8.GetBytes(Common.SerializeJson(ret, true));
+        }
+
+        private byte[] LoginSamlFinishRequest()
+        {
+            Dictionary<string, string> ret = new Dictionary<string, string>();
+            ret.Add("email", Email);
+            ret.Add("requestId", _SamlRequestId);
             return Encoding.UTF8.GetBytes(Common.SerializeJson(ret, true));
         }
 

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1EFD5CAB-513C-47C4-8504-2F050F7A47D8}</ProjectGuid>
+    <ProjectGuid>{D3DDB3E0-22BC-4AC2-8DE2-F34083522044}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SdkCli</RootNamespace>
-    <AssemblyName>SdkCli</AssemblyName>
+    <RootNamespace>SamlTest</RootNamespace>
+    <AssemblyName>SamlTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <ReleaseVersion>1.0.3</ReleaseVersion>
   </PropertyGroup>

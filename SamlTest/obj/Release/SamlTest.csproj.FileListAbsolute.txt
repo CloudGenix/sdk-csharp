@@ -1,0 +1,9 @@
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/bin/Release/SamlTest.exe
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/bin/Release/CloudGenixSdk.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/bin/Release/RestWrapper.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/bin/Release/Newtonsoft.Json.dll
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/bin/Release/RestWrapper.pdb
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/bin/Release/Newtonsoft.Json.xml
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/obj/Release/SamlTest.csprojResolveAssemblyReference.cache
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/obj/Release/SamlTest.csproj.CoreCompileInputs.cache
+/Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/obj/Release/SamlTest.exe

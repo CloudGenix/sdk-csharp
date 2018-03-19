@@ -1,0 +1,12 @@
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\TokenTest.exe.config
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\TokenTest.exe
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\TokenTest.pdb
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\CloudGenixSdk.dll
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\RestWrapper.dll
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\Newtonsoft.Json.dll
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\CloudGenixSdk.pdb
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\RestWrapper.pdb
+D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\Newtonsoft.Json.xml
+D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.csprojResolveAssemblyReference.cache
+D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.exe
+D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.pdb

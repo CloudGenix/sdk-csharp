@@ -12,3 +12,4 @@ D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Release\RestWrapper.dll
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Release\RestWrapper.pdb
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Release\Newtonsoft.Json.xml
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\obj\Release\CloudGenixSdk.dll
+D:\code\cloudgenix\sdk-csharp\CloudGenixSdk\obj\Release\CloudGenix.csprojResolveAssemblyReference.cache

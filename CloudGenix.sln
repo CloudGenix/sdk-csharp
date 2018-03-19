@@ -1,11 +1,14 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudGenix", "CloudGenixSdk\CloudGenix.csproj", "{C18A2B54-D474-4E76-8AA1-603C235DC9E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SdkCli", "SdkCli\SdkCli.csproj", "{1EFD5CAB-513C-47C4-8504-2F050F7A47D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamlTest", "SamlTest\SamlTest.csproj", "{D3DDB3E0-22BC-4AC2-8DE2-F34083522044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenTest", "TokenTest\TokenTest.csproj", "{5E654618-BF87-4D84-8FBC-71FDB4F49456}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +28,13 @@ Global
 		{D3DDB3E0-22BC-4AC2-8DE2-F34083522044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3DDB3E0-22BC-4AC2-8DE2-F34083522044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3DDB3E0-22BC-4AC2-8DE2-F34083522044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		version = 1.0.3

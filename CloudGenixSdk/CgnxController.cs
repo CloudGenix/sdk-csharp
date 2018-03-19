@@ -1,7 +1,7 @@
 ﻿/*
 
     CloudGenix Controller SDK
-    (c) 2017 CloudGenix, Inc.
+    (c) 2018 CloudGenix, Inc.
     All Rights Reserved
 
     https://www.cloudgenix.com
@@ -84,6 +84,26 @@ namespace CloudGenix
             IgnoreCertErrors = true;
             Email = email;
             Password = null;
+            Endpoint = "https://api.cloudgenix.com:443";
+
+            _Endpoints = new EndpointManager();
+
+            Debug.WriteLine("CgnxController initialized");
+        }
+
+        /// <summary>
+        /// Initializes the CloudGenix SDK for static auth token login.
+        /// </summary>
+        /// <param name="token">Authentication token.</param>
+        /// <param name="isToken">Ignore, set to either true or false.</param>
+        public CgnxController(string token, bool isToken)
+        {
+            if (String.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(token));
+
+            IgnoreCertErrors = true;
+            Email = null;
+            Password = null;
+            AuthToken = token;
             Endpoint = "https://api.cloudgenix.com:443";
 
             _Endpoints = new EndpointManager();
@@ -291,6 +311,23 @@ namespace CloudGenix
             GetTenantId();
 
             Debug.WriteLine("LoginSamlFinish authenticated successfully");
+
+            _LoggedIn = true;
+
+            return true;
+        }
+
+        public bool LoginWithToken()
+        { 
+            BuildAuthHeaders(AuthToken); 
+
+            Debug.WriteLine("LoginWithToken building endpoints");
+            BuildEndpoints();
+
+            Debug.WriteLine("LoginWithToken retrieving tenant ID");
+            GetTenantId();
+
+            Debug.WriteLine("LoginWithToken authenticated successfully");
 
             _LoggedIn = true;
 
@@ -1315,7 +1352,7 @@ namespace CloudGenix
         private bool BuildEndpoints()
         {
             string url = BuildUrl("permissions");
-
+             
             RestResponse resp = RestRequest.SendRequestSafe(
                 url,
                 "application/json",

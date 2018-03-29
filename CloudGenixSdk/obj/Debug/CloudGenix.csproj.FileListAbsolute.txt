@@ -23,6 +23,6 @@ D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Debug\Newtonsoft.Json.dll
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Debug\RestWrapper.dll
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Debug\RestWrapper.pdb
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\bin\Debug\Newtonsoft.Json.xml
+D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\obj\Debug\CloudGenix.csprojResolveAssemblyReference.cache
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\obj\Debug\CloudGenixSdk.dll
 D:\Code\CloudGenix\sdk-csharp\CloudGenixSdk\obj\Debug\CloudGenixSdk.pdb
-D:\code\cloudgenix\sdk-csharp\CloudGenixSdk\obj\Debug\CloudGenix.csprojResolveAssemblyReference.cache

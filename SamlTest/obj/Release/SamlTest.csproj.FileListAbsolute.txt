@@ -7,11 +7,11 @@
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/obj/Release/SamlTest.csprojResolveAssemblyReference.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/obj/Release/SamlTest.csproj.CoreCompileInputs.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/SamlTest/obj/Release/SamlTest.exe
-D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.csprojResolveAssemblyReference.cache
-D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.exe
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\SamlTest.exe
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\CloudGenixSdk.dll
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\RestWrapper.dll
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\Newtonsoft.Json.dll
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\RestWrapper.pdb
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\Newtonsoft.Json.xml
+D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.csprojResolveAssemblyReference.cache
+D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.exe

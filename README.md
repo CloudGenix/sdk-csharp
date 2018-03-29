@@ -9,8 +9,7 @@ For issues, please contact joel@cloudgenix.com or open a support ticket with dev
 The CloudGenix Controller is only accessible to CloudGenix customers with a valid login using an IP address that has been whitelisted.  Please contact us at one of the aforementioned methods if you need to have your IP addresses whitelisted.
 
 ## New
-- Static auth token login support via ```LoginWithToken``` and constructor ```CgnxController(token, true)```
-- Static auth token login test project
+- ```GetAllEvents()``` method
 
 ## Outstanding Items
 - Several classes contain members with generic types, which will require casting prior to use in consuming code.  This can be fixed with additional details on the object model from engineering
@@ -48,3 +47,5 @@ v1.0.x
 - Etags in resources
 - SAML login support via ```LoginSamlStart``` and ```LoginSamlFinish``` methods
 - SAML login test project
+- Static auth token login support via ```LoginWithToken``` and constructor ```CgnxController(token, true)```
+- Static auth token login test project

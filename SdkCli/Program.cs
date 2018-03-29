@@ -80,8 +80,13 @@ namespace SdkCli
             #region Initialize-and-Login
 
             _Cgnx = new CgnxController(
-                Common.InputString("Email address :", "demo@cloudgenix.com", false),
-                Common.InputString("Password      :", "demo@cloudgenix.com", false));
+                Common.InputString("Email address :", null, false),
+                Common.InputString("Password      :", null, false));
+
+            _Cgnx.Endpoint =
+                 Common.InputString("Endpoint      :", "https://api.cloudgenix.com:443", true);
+
+            if (String.IsNullOrEmpty(_Cgnx.Endpoint)) _Cgnx.Endpoint = "https://api.cloudgenix.com:443";
 
             if (!_Cgnx.Login())
             {
@@ -305,6 +310,10 @@ namespace SdkCli
                         SendEventsQuery();
                         break;
                          
+                    case "events all":
+                        GetAllEvents();
+                        break;
+
                     #endregion
 
                     default:
@@ -348,7 +357,7 @@ namespace SdkCli
             Console.WriteLine("  flows <cmd>    retrieve flows");
             Console.WriteLine("                 | clear   show   build   addfilter   submit");
             Console.WriteLine("  events <cmd>   retrieve events");
-            Console.WriteLine("                 | clear   show   build   submit");
+            Console.WriteLine("                 | clear   show   build   submit   all");
             Console.WriteLine("");
         }
 
@@ -1148,6 +1157,26 @@ namespace SdkCli
             }
 
             if (_Cgnx.GetEvents(_EventQuery, out _EventResponse))
+            {
+                Console.WriteLine("Success");
+                if (_EventResponse != null) Console.WriteLine(Common.SerializeJson(_EventResponse, true));
+                else Console.WriteLine("(null)");
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+            }
+        }
+
+        private static void GetAllEvents()
+        {
+            if (_EventQuery == null)
+            {
+                Console.WriteLine("Please build an events query first");
+                return;
+            }
+
+            if (_Cgnx.GetAllEvents(_EventQuery, out _EventResponse))
             {
                 Console.WriteLine("Success");
                 if (_EventResponse != null) Console.WriteLine(Common.SerializeJson(_EventResponse, true));

@@ -1202,6 +1202,64 @@ namespace CloudGenix
             return true;
         }
 
+        public bool GetAllEvents(EventQuery query, out EventResponse events)
+        {
+            events = null;
+            if (query == null) throw new ArgumentNullException(nameof(query));
+
+            while (true)
+            {
+                EventResponse currResponse = null;
+                if (!GetEvents(query, out currResponse))
+                {
+                    Debug.WriteLine("GetAllEvents failed to retrieve events");
+                    return false;
+                }
+
+                if (events == null)
+                {
+                    // replace
+                    events = currResponse;
+                    if (events.Events == null)
+                    {
+                        events.Events = new List<EventResponse.EventDetails>();
+                    }
+                }
+                else 
+                {
+                    // amend
+                    if (currResponse != null)
+                    {
+                        if (events.Events == null)
+                        {
+                            events.Events = new List<EventResponse.EventDetails>();
+                        }
+
+                        if (currResponse.Events != null && currResponse.Events.Count > 0)
+                        {
+                            foreach (EventResponse.EventDetails currEventDetails in currResponse.Events)
+                            {
+                                events.Events.Add(currEventDetails);
+                            }
+
+                            events.IncludedCount += currResponse.Events.Count;
+                            events.TotalCount += currResponse.Events.Count;
+                        }
+
+                        if (!String.IsNullOrEmpty(currResponse.Offset))
+                        {
+                            query.Offset = currResponse.Offset;
+                        }
+                        else
+                        {
+                            // end reached
+                            return true;
+                        }
+                    } 
+                }
+            }
+        }
+
         public bool GetTopN(TopNQuery query, out TopNResponse topn)
         {
             topn = null;

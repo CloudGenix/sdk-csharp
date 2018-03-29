@@ -28,6 +28,9 @@ namespace CloudGenix.Classes
     {
         #region Public-Members
 
+        [JsonProperty("_offset")]
+        public string Offset { get; set; }
+
         [JsonProperty("alarm")]
         public EventsCount Alarm { get; set; }
 

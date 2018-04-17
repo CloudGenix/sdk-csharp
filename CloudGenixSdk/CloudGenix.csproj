@@ -79,6 +79,8 @@
     <Compile Include="Classes\SnmpAgent.cs" />
     <Compile Include="Classes\EventResponse.cs" />
     <Compile Include="Classes\EventQuery.cs" />
+    <Compile Include="Classes\Client.cs" />
+    <Compile Include="Classes\ClientPermission.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />

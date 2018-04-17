@@ -38,6 +38,7 @@ namespace CloudGenix
         public string Endpoint { get; set; }
         public string AuthToken { get; private set; }
         public string TenantId { get; private set; }
+        public string OperatorId { get; private set; }
 
         #endregion
 
@@ -182,7 +183,7 @@ namespace CloudGenix
             BuildEndpoints();
 
             Debug.WriteLine("Login retrieving tenant ID");
-            GetTenantId();
+            GetTenantAndOperatorId();
 
             Debug.WriteLine("Login authenticated successfully");
 
@@ -308,7 +309,7 @@ namespace CloudGenix
             BuildEndpoints();
 
             Debug.WriteLine("LoginSamlFinish retrieving tenant ID");
-            GetTenantId();
+            GetTenantAndOperatorId();
 
             Debug.WriteLine("LoginSamlFinish authenticated successfully");
 
@@ -325,7 +326,7 @@ namespace CloudGenix
             BuildEndpoints();
 
             Debug.WriteLine("LoginWithToken retrieving tenant ID");
-            GetTenantId();
+            GetTenantAndOperatorId();
 
             Debug.WriteLine("LoginWithToken authenticated successfully");
 
@@ -370,6 +371,198 @@ namespace CloudGenix
         public Dictionary<string, string> GetAllEndpoints()
         {
             return _Endpoints.GetAllEndpoints();
+        }
+
+        public bool GetClients(out List<Client> clients)
+        {
+            #region Retrieve-Clients
+
+            clients = null;
+            string url = BuildUrl("clients_t");
+            if (String.IsNullOrEmpty(url))
+            {
+                Debug.WriteLine("GetClients MSP/ESP login not available for this login (clients URL not found in digest)");
+                return false;
+            }
+
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "GET",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                null);
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetClients no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetClients non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetClients no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetClients response: " + Encoding.UTF8.GetString(resp.Data));
+
+            ResourceResponse resRespClients = Common.DeserializeJson<ResourceResponse>(resp.Data);
+            clients = resRespClients.GetItems<List<Client>>();
+
+            Debug.WriteLine("GetClients found " + clients.Count + " client(s)");
+
+            #endregion
+
+            #region Retrieve-Permissions
+
+            url = BuildUrl("permissions_clients_d");
+            if (String.IsNullOrEmpty(url))
+            {
+                Debug.WriteLine("GetClients MSP/ESP login not available for this login (permissions URL not found in digest)");
+                return false;
+            }
+
+            url = Common.StringReplaceFirst(url, "%s", TenantId.ToString());
+            url = Common.StringReplaceFirst(url, "%s", OperatorId.ToString());
+
+            resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "GET",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                null);
+
+            if (resp == null)
+            {
+                Debug.WriteLine("GetClients no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("GetClients non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("GetClients no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("GetClients response: " + Encoding.UTF8.GetString(resp.Data));
+
+            ResourceResponse resRespPerms = Common.DeserializeJson<ResourceResponse>(resp.Data);
+            List<ClientPermission> permissions = resRespPerms.GetItems<List<ClientPermission>>();
+
+            Debug.WriteLine("GetClients found " + permissions.Count + " client permission(s)");
+
+            #endregion
+
+            #region Filter-and-Respond
+
+            List<Client> filtered = new List<Client>();
+            foreach (Client currClient in clients)
+            {
+                foreach (ClientPermission currPerm in permissions)
+                {
+                    if (currPerm.ClientId == currClient.Id)
+                    {
+                        filtered.Add(currClient);
+                        break;
+                    }
+                }
+            }
+
+            clients = filtered;
+            Debug.WriteLine("GetClients returning " + clients.Count + " permitted client(s)");
+            return true;
+
+            #endregion
+        }
+
+        public bool LoginAsClient(string clientId)
+        {
+            if (String.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+             
+            string url = BuildUrl("login_clients"); 
+            url = Common.StringReplaceFirst(url, "%s", TenantId);
+            url = Common.StringReplaceFirst(url, "%s", clientId);
+
+            string reqBody = "{}";
+
+            RestResponse resp = RestRequest.SendRequestSafe(
+                url,
+                "application/json",
+                "POST",
+                null, null, false, IgnoreCertErrors,
+                _AuthHeaders,
+                Encoding.UTF8.GetBytes(reqBody));
+
+            if (resp == null)
+            {
+                Debug.WriteLine("LoginAsClient no response received from server for URL " + url);
+                return false;
+            }
+
+            if (resp.StatusCode != 200 && resp.StatusCode != 201)
+            {
+                Debug.WriteLine("LoginAsClient non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine(resp.ToString());
+                return false;
+            }
+
+            if (resp.Data == null || resp.Data.Length < 1)
+            {
+                Debug.WriteLine("LoginAsClient no data returned from server for URL " + url);
+                return false;
+            }
+
+            Debug.WriteLine("LoginAsClient response: " + Encoding.UTF8.GetString(resp.Data));
+
+            Dictionary<string, object> respDict = Common.DeserializeJson<Dictionary<string, object>>(resp.Data);
+            if (!respDict.ContainsKey("x_auth_token"))
+            {
+                Debug.WriteLine("LoginAsClient no x_auth_token key found in response data");
+                return false;
+            }
+            else
+            {
+                BuildAuthHeaders(respDict["x_auth_token"].ToString());
+                AuthToken = respDict["x_auth_token"].ToString();
+            }
+
+            if (respDict.ContainsKey("api_endpoint") && !String.IsNullOrEmpty(respDict["api_endpoint"].ToString()))
+            {
+                Debug.WriteLine("LoginAsClient new API endpoint found in response: " + respDict["api_endpoint"]);
+                Endpoint = respDict["api_endpoint"].ToString();
+
+                if (!Endpoint.EndsWith("/")) Endpoint += "/";
+            }
+
+            Debug.WriteLine("LoginAsClient building endpoints");
+            BuildEndpoints();
+
+            Debug.WriteLine("LoginAsClient retrieving tenant ID");
+            GetTenantAndOperatorId();
+
+            Debug.WriteLine("LoginAsClient authenticated successfully");
+
+            _LoggedIn = true;
+
+            return true;
         }
 
         public bool GetContexts(out List<Context> contexts)
@@ -1467,7 +1660,7 @@ namespace CloudGenix
             return true;
         }
 
-        private bool GetTenantId()
+        private bool GetTenantAndOperatorId()
         {
             string url = BuildUrl("profile");
 
@@ -1481,40 +1674,46 @@ namespace CloudGenix
 
             if (resp == null)
             {
-                Debug.WriteLine("GetTenantId no response received from server for URL " + url);
+                Debug.WriteLine("GetTenantAndOperatorId no response received from server for URL " + url);
                 return false;
             }
 
             if (resp.StatusCode != 200 && resp.StatusCode != 201)
             {
-                Debug.WriteLine("GetTenantId non-200/201 status returned from server for URL " + url);
+                Debug.WriteLine("GetTenantAndOperatorId non-200/201 status returned from server for URL " + url);
                 Debug.WriteLine(resp.ToString());
                 return false;
             }
 
             if (resp.Data == null || resp.Data.Length < 1)
             {
-                Debug.WriteLine("GetTenantId no data returned from server for URL " + url);
+                Debug.WriteLine("GetTenantAndOperatorId no data returned from server for URL " + url);
                 return false;
             }
 
-            Debug.WriteLine("GetTenantId response: " + Encoding.UTF8.GetString(resp.Data));
+            Debug.WriteLine("GetTenantAndOperatorId response: " + Encoding.UTF8.GetString(resp.Data));
 
             Dictionary<string, object> respDict = Common.DeserializeJson<Dictionary<string, object>>(resp.Data);
             if (!respDict.ContainsKey("tenant_id"))
             {
-                Debug.WriteLine("GetTenantId no tenant_id key found in response data");
+                Debug.WriteLine("GetTenantAndOperatorId no tenant_id key found in response data");
                 return false;
             }
             else if (!String.IsNullOrEmpty(respDict["tenant_id"].ToString()))
             {
                 TenantId = respDict["tenant_id"].ToString(); 
-                Debug.WriteLine("GetTenantId tenant ID found in response: " + TenantId);
+                Debug.WriteLine("GetTenantAndOperatorId tenant ID found in response: " + TenantId);
             }
             else
             {
-                Debug.WriteLine("GetTenantId null or empty tenant ID found in response");
+                Debug.WriteLine("GetTenantAndOperatorId null or empty tenant ID found in response");
                 return false;
+            }
+
+            if (respDict.ContainsKey("id"))
+            {
+                OperatorId = respDict["id"].ToString();
+                Debug.WriteLine("GetTenantAndOperatorId operator ID found in response: " + OperatorId);
             }
 
             return true;

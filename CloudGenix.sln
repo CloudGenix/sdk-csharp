@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamlTest", "SamlTest\SamlTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenTest", "TokenTest\TokenTest.csproj", "{5E654618-BF87-4D84-8FBC-71FDB4F49456}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MspTest", "MspTest\MspTest.csproj", "{618051E2-03C6-46E1-AAE5-A3ABFD09C0DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E654618-BF87-4D84-8FBC-71FDB4F49456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{618051E2-03C6-46E1-AAE5-A3ABFD09C0DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{618051E2-03C6-46E1-AAE5-A3ABFD09C0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{618051E2-03C6-46E1-AAE5-A3ABFD09C0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{618051E2-03C6-46E1-AAE5-A3ABFD09C0DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

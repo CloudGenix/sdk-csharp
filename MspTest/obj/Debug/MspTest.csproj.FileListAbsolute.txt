@@ -9,3 +9,16 @@
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/MspTest/obj/Debug/MspTest.csproj.CoreCompileInputs.cache
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/MspTest/obj/Debug/MspTest.exe
 /Users/joelchristner/Documents/Code/cgnx/CloudGenixSdk/C#/MspTest/obj/Debug/MspTest.pdb
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Debug\MspTest.csprojResolveAssemblyReference.cache
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Debug\MspTest.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Debug\MspTest.exe
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Debug\MspTest.pdb
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\MspTest.exe
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\MspTest.pdb
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\CloudGenixSdk.dll
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\RestWrapper.dll
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\Newtonsoft.Json.dll
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\CloudGenixSdk.pdb
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\RestWrapper.pdb
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Debug\Newtonsoft.Json.xml
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Debug\MspTest.csproj.CopyComplete

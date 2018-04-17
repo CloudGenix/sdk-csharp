@@ -33,3 +33,5 @@ D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Debug\Newtonsoft.Json.xml
 D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Debug\SdkCli.csprojResolveAssemblyReference.cache
 D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Debug\SdkCli.exe
 D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Debug\SdkCli.pdb
+D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Debug\SdkCli.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Debug\SdkCli.csproj.CopyComplete

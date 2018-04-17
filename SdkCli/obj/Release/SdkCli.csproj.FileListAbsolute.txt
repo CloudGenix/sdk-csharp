@@ -15,3 +15,5 @@ D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\RestWrapper.pdb
 D:\Code\CloudGenix\sdk-csharp\SdkCli\bin\Release\Newtonsoft.Json.xml
 D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Release\SdkCli.csprojResolveAssemblyReference.cache
 D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Release\SdkCli.exe
+D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Release\SdkCli.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\SdkCli\obj\Release\SdkCli.csproj.CopyComplete

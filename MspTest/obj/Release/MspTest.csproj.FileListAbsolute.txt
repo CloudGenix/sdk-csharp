@@ -1,0 +1,10 @@
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Release\MspTest.exe
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Release\CloudGenixSdk.dll
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Release\RestWrapper.dll
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Release\Newtonsoft.Json.dll
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Release\RestWrapper.pdb
+D:\Code\CloudGenix\sdk-csharp\MspTest\bin\Release\Newtonsoft.Json.xml
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Release\MspTest.csprojResolveAssemblyReference.cache
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Release\MspTest.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Release\MspTest.csproj.CopyComplete
+D:\Code\CloudGenix\sdk-csharp\MspTest\obj\Release\MspTest.exe

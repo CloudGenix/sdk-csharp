@@ -23,3 +23,5 @@ D:\Code\CloudGenix\sdk-csharp\TokenTest\bin\Debug\Newtonsoft.Json.xml
 D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.csprojResolveAssemblyReference.cache
 D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.exe
 D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.pdb
+D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\TokenTest\obj\Debug\TokenTest.csproj.CopyComplete

@@ -9,7 +9,8 @@ For issues, please contact joel@cloudgenix.com or open a support ticket with dev
 The CloudGenix Controller is only accessible to CloudGenix customers with a valid login using an IP address that has been whitelisted.  Please contact us at one of the aforementioned methods if you need to have your IP addresses whitelisted.
 
 ## New
-- ```GetAllEvents()``` method
+- Support for managed service provider (MSP) and enterprise service provider (ESP) login and client emulation; use ```GetClients()``` method followed by ```LoginAsClient()``` method
+- Test project for MSP/ESP login (refer to ```MspTest``` project)
 
 ## Outstanding Items
 - Several classes contain members with generic types, which will require casting prior to use in consuming code.  This can be fixed with additional details on the object model from engineering
@@ -49,3 +50,4 @@ v1.0.x
 - SAML login test project
 - Static auth token login support via ```LoginWithToken``` and constructor ```CgnxController(token, true)```
 - Static auth token login test project
+- ```GetAllEvents()``` method

@@ -21,3 +21,5 @@ D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Debug\Newtonsoft.Json.xml
 D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Debug\SamlTest.csprojResolveAssemblyReference.cache
 D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Debug\SamlTest.exe
 D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Debug\SamlTest.pdb
+D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Debug\SamlTest.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Debug\SamlTest.csproj.CopyComplete

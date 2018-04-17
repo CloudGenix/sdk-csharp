@@ -15,3 +15,5 @@ D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\RestWrapper.pdb
 D:\Code\CloudGenix\sdk-csharp\SamlTest\bin\Release\Newtonsoft.Json.xml
 D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.csprojResolveAssemblyReference.cache
 D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.exe
+D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.csproj.CoreCompileInputs.cache
+D:\Code\CloudGenix\sdk-csharp\SamlTest\obj\Release\SamlTest.csproj.CopyComplete
